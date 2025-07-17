@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>タイトル</title>
+    <title>問題1</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -14,7 +14,8 @@
         <!-- Header -->
         <header id="header">
             <div class="logo">
-                <span class="icon fa-gem"></span>
+                <!-- 自分のアイコン画像に差し替え -->
+                <img src="images/myicon.png" alt="My Icon" style="width:80px; height:auto; border-radius:50%;" />
             </div>
             <div class="content">
                 <div class="inner">
@@ -26,16 +27,25 @@
 
         <!-- Main -->
         <div id="main">
-
-            <!-- 答え入力フォームを真ん中に大きく配置 -->
-            <section style="display:flex; justify-content:center; align-items:center; height:60vh;">
-
+            <!-- 答え入力フォームを中央に大きく配置 -->
+            <section style="display:flex; justify-content:center; align-items:center; height:60vh; flex-direction:column;">
                 <form id="answerForm" style="width:80%; max-width:400px; text-align:center;">
+                    <!-- 下線スタイルの入力欄 -->
                     <input 
                         type="text" 
                         id="userAnswer" 
                         placeholder="答えを入力してください" 
-                        style="width:100%; font-size:1.5rem; padding:10px; border-radius:5px; border:1px solid #ccc;"
+                        style="
+                            width:100%;
+                            font-size:1.5rem;
+                            padding:10px;
+                            border:none;
+                            border-bottom:2px solid #ccc;
+                            background:transparent;
+                            color:#fff;
+                            outline:none;
+                            text-align:center;
+                        "
                         autocomplete="off"
                     />
                     <br /><br />
@@ -47,9 +57,7 @@
                     />
                     <p id="resultMessage" style="margin-top:15px; font-weight:bold;"></p>
                 </form>
-
             </section>
-
         </div>
 
         <!-- Footer -->
@@ -68,16 +76,17 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
 
+    <!-- 回答チェック用スクリプト -->
     <script>
         document.getElementById('answerForm').addEventListener('submit', function(e){
             e.preventDefault();
-            const correctAnswer = "みず";  // 正解ワードはここで設定
+            const correctAnswer = "みず";  // 正解を設定
             let input = document.getElementById('userAnswer').value.trim().toLowerCase();
 
             if(input === correctAnswer){
                 document.getElementById('resultMessage').innerHTML = '正解！3秒後に次のページへ移動します…';
                 setTimeout(function(){
-                    window.location.href = 'mondai2.html';  // 次の問題ページのURLに変更してください
+                    window.location.href = 'mondai2.html';  // 次の問題のファイル名
                 }, 3000);
             } else {
                 document.getElementById('resultMessage').textContent = 'ちがうみたい…もう一度試してね！';
