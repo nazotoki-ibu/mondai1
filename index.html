@@ -1,112 +1,56 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-    <title>問題1</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-    <style>
-        #answerForm {
-            margin: 50px auto;
-            max-width: 500px;
-            padding: 30px;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.1);
-        }
-
-        #userAnswer {
-            width: 100%;
-            font-size: 1.5rem;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #aaa;
-            background-color: #fff;
-        }
-
-        #answerForm input[type="submit"] {
-            margin-top: 15px;
-            font-size: 1rem;
-            padding: 10px 20px;
-            width: auto;
-            cursor: pointer;
-        }
-
-        #resultMessage {
-            margin-top: 15px;
-            font-weight: bold;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>問題1</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #eef;
+      padding: 50px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2em;
+    }
+    input[type="text"] {
+      width: 60%;
+      padding: 10px;
+      font-size: 1.2em;
+      margin: 20px 0;
+      border: 2px solid #999;
+      border-radius: 5px;
+    }
+    input[type="submit"] {
+      padding: 8px 16px;
+      font-size: 1em;
+    }
+    #resultMessage {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
 </head>
-<body class="is-preload">
+<body>
+  <h1>問題1</h1>
+  <p>これはテスト用の問題文です。答えを入力して送信してみてください。</p>
+  <form id="answerForm">
+    <input type="text" id="userAnswer" placeholder="答えを入力">
+    <br>
+    <input type="submit" value="送信">
+  </form>
+  <div id="resultMessage"></div>
 
-    <div id="wrapper">
-
-        <!-- Header -->
-        <header id="header">
-            <div class="logo">
-                <span class="icon fa-gem"></span> <!-- アイコンここを後で画像に変更予定 -->
-            </div>
-            <div class="content">
-                <div class="inner">
-                    <h1>問題1</h1>
-                    <p>水が上から下に流れるとき、真っ先に濡れるのはどこ？</p>
-                </div>
-            </div>
-        </header>
-
-        <!-- Main -->
-        <section id="main" style="display:block;">
-            <form id="answerForm">
-                <input 
-                    type="text" 
-                    id="userAnswer" 
-                    placeholder="答えを入力してください"
-                    autocomplete="off"
-                />
-                <br />
-                <input 
-                    type="submit" 
-                    value="送信" 
-                    class="button primary"
-                />
-                <p id="resultMessage"></p>
-            </form>
-        </section>
-
-        <!-- Footer -->
-        <footer id="footer">
-            <p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-        </footer>
-    </div>
-
-    <div id="bg"></div>
-
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-
-    <script>
-        document.getElementById('answerForm').addEventListener('submit', function(e){
-            e.preventDefault();
-            const correctAnswer = "あたま";  // 正解をここに
-            let input = document.getElementById('userAnswer').value.trim().toLowerCase();
-
-            if(input === correctAnswer){
-                document.getElementById('resultMessage').innerHTML = '正解！次の問題へ進みます…';
-                setTimeout(function(){
-                    window.location.href = 'mondai2.html';  // 次ページへ
-                }, 3000);
-            } else {
-                document.getElementById('resultMessage').textContent = 'ちがうみたい…もう一度試してね！';
-            }
-        });
-    </script>
-
+  <script>
+    document.getElementById("answerForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const answer = document.getElementById("userAnswer").value.trim().toLowerCase();
+      if (answer === "みず") {
+        document.getElementById("resultMessage").textContent = "正解です！";
+      } else {
+        document.getElementById("resultMessage").textContent = "ちがいます。";
+      }
+    });
+  </script>
 </body>
 </html>
-v
