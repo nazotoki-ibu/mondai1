@@ -1,33 +1,69 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-  <title>問題1</title>
-  <meta charset="UTF-8">
+    <title>問題1</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f8ff;
+            color: #222;
+        }
+        #answerForm input[type="text"] {
+            font-family: inherit;
+            color: #333;
+        }
+        #answerForm input[type="submit"] {
+            font-family: inherit;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        #answerForm input[type="submit"]:hover {
+            background-color: #007acc !important;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-  <h1>問題1</h1>
-  <p>ここに問題を書きます。</p>
 
-  <form id="form">
-    <input type="text" id="answer" placeholder="答えを入力してね" />
-    <button type="submit">送信</button>
-  </form>
+<section style="display:flex; justify-content:center; align-items:center; height:60vh; background: linear-gradient(135deg, #e0f7ff, #cceeff);">
+    <form id="answerForm" style="width:80%; max-width:400px; text-align:center; border: 2px solid #666; border-radius: 10px; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.2); background: #fff;">
+        <input 
+            type="text" 
+            id="userAnswer" 
+            placeholder="答えを入力してください" 
+            style="width: 100%; font-size: 1.5rem; padding: 12px 10px; border: none; border-bottom: 2px solid #666; outline: none;"
+            autocomplete="off"
+        />
+        <br /><br />
+        <input 
+            type="submit" 
+            value="送信" 
+            class="button primary" 
+            style="font-size: 1.5rem; padding: 12px 0; width: 100%; cursor: pointer; border-radius: 8px; background-color: #0099ff; color: white; border: none;"
+        />
+        <p id="resultMessage" style="margin-top: 15px; font-weight: bold; color: #333;"></p>
+    </form>
+</section>
 
-  <p id="message"></p>
+<script>
+    document.getElementById('answerForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        const correctAnswer = "みず";  // 正解ワードはここで設定
+        let input = document.getElementById('userAnswer').value.trim().toLowerCase();
 
-  <script>
-    document.getElementById('form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const answer = document.getElementById('answer').value.trim();
-      if(answer === 'みず') {
-        document.getElementById('message').textContent = '正解！次のページに移動するよ！';
-        setTimeout(() => {
-          location.href = 'mondai2.html';
-        }, 2000);
-      } else {
-        document.getElementById('message').textContent = 'ちがうよ。もう一度やってみてね！';
-      }
+        if(input === correctAnswer){
+            document.getElementById('resultMessage').innerHTML = '正解！3秒後に次のページへ移動します…';
+            setTimeout(function(){
+                window.location.href = 'mondai2.html';  // 次の問題ページのURLに変更してください
+            }, 3000);
+        } else {
+            document.getElementById('resultMessage').textContent = 'ちがうみたい…もう一度試してね！';
+        }
     });
-  </script>
+</script>
+
 </body>
 </html>
+v
