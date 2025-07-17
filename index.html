@@ -6,6 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <style>
+        /* 追加スタイル */
+        .custom-input {
+            width: 100%;
+            font-size: 1.5rem;
+            padding: 12px 16px;
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid rgba(255, 255, 255, 0.5); /* 枠線 */
+            border-bottom: 3px solid #ffffff;            /* 下線を太めに */
+            border-radius: 8px;
+            outline: none;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .custom-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        form input[type="submit"] {
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        #answerForm {
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body class="is-preload">
 
@@ -14,7 +47,7 @@
         <!-- Header -->
         <header id="header">
             <div class="logo">
-                <!-- 自分のアイコン画像に差し替え -->
+                <!-- 後でアイコン変更可 -->
                 <img src="images/myicon.png" alt="My Icon" style="width:80px; height:auto; border-radius:50%;" />
             </div>
             <div class="content">
@@ -27,33 +60,20 @@
 
         <!-- Main -->
         <div id="main">
-            <!-- 答え入力フォームを中央に大きく配置 -->
             <section style="display:flex; justify-content:center; align-items:center; height:60vh; flex-direction:column;">
-                <form id="answerForm" style="width:80%; max-width:400px; text-align:center;">
-                    <!-- 下線スタイルの入力欄 -->
+                <form id="answerForm">
                     <input 
                         type="text" 
                         id="userAnswer" 
                         placeholder="答えを入力してください" 
-                        style="
-                            width:100%;
-                            font-size:1.5rem;
-                            padding:10px;
-                            border:none;
-                            border-bottom:2px solid #ccc;
-                            background:transparent;
-                            color:#fff;
-                            outline:none;
-                            text-align:center;
-                        "
+                        class="custom-input"
                         autocomplete="off"
                     />
                     <br /><br />
                     <input 
                         type="submit" 
                         value="送信" 
-                        class="button primary" 
-                        style="font-size:1.5rem; padding:10px 20px; width:100%; cursor:pointer;"
+                        class="button primary"
                     />
                     <p id="resultMessage" style="margin-top:15px; font-weight:bold;"></p>
                 </form>
@@ -76,17 +96,17 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
 
-    <!-- 回答チェック用スクリプト -->
+    <!-- 回答チェック -->
     <script>
         document.getElementById('answerForm').addEventListener('submit', function(e){
             e.preventDefault();
-            const correctAnswer = "みず";  // 正解を設定
+            const correctAnswer = "みず";  // 正解ワード
             let input = document.getElementById('userAnswer').value.trim().toLowerCase();
 
             if(input === correctAnswer){
                 document.getElementById('resultMessage').innerHTML = '正解！3秒後に次のページへ移動します…';
                 setTimeout(function(){
-                    window.location.href = 'mondai2.html';  // 次の問題のファイル名
+                    window.location.href = 'mondai2.html';  // 次ページURL
                 }, 3000);
             } else {
                 document.getElementById('resultMessage').textContent = 'ちがうみたい…もう一度試してね！';
