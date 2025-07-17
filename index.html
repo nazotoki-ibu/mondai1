@@ -7,35 +7,57 @@
     body {
       font-family: sans-serif;
       background-color: #eef;
-      padding: 50px;
-      text-align: center;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     h1 {
       font-size: 2em;
+      margin-bottom: 0.2em;
+    }
+    p {
+      margin-bottom: 3em;
+      font-size: 1.2em;
+    }
+    form {
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
     }
     input[type="text"] {
-      width: 60%;
-      padding: 10px;
+      width: 100%;
+      padding: 14px;
       font-size: 1.2em;
-      margin: 20px 0;
       border: 2px solid #999;
       border-radius: 5px;
+      box-sizing: border-box;
     }
     input[type="submit"] {
-      padding: 8px 16px;
+      margin-top: 10px;
+      padding: 8px 20px;
       font-size: 1em;
+      background-color: #3366cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
     #resultMessage {
       margin-top: 20px;
       font-weight: bold;
+      font-size: 1.1em;
     }
   </style>
 </head>
 <body>
   <h1>問題1</h1>
-  <p>これはテスト用の問題文です。答えを入力して送信してみてください。</p>
+  <p>これはテスト用の問題です。「みず」と入力してみてください。</p>
   <form id="answerForm">
-    <input type="text" id="userAnswer" placeholder="答えを入力">
+    <input type="text" id="userAnswer" placeholder="答えを入力してください">
     <br>
     <input type="submit" value="送信">
   </form>
@@ -46,9 +68,12 @@
       e.preventDefault();
       const answer = document.getElementById("userAnswer").value.trim().toLowerCase();
       if (answer === "みず") {
-        document.getElementById("resultMessage").textContent = "正解です！";
+        document.getElementById("resultMessage").textContent = "正解です！3秒後に次の問題へ…";
+        setTimeout(() => {
+          window.location.href = "mondai2.html";  // ← 次の問題ができたらここ変更
+        }, 3000);
       } else {
-        document.getElementById("resultMessage").textContent = "ちがいます。";
+        document.getElementById("resultMessage").textContent = "ちがいます。もう一度！";
       }
     });
   </script>
