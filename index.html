@@ -1,89 +1,103 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>問題1</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-      background: #f0f0f0;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      height: 100vh;
-      overflow-y: auto;
-    }
-
-    .container {
-      max-width: 600px;
-      width: 90%;
-      margin-top: 80px;
-      text-align: center;
-    }
-
-    .question-title {
-      font-size: 1.8rem;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    .question-text {
-      font-size: 1.2rem;
-      font-weight: 500;
-      margin-bottom: 80px;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 12px;
-      font-size: 1.1rem;
-      border: 2px solid #888;
-      border-radius: 8px;
-      box-sizing: border-box;
-      margin-bottom: 16px;
-    }
-
-    button {
-      padding: 8px 20px;
-      font-size: 1rem;
-      background-color: #444;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #222;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
 <body>
-  <div class="container">
-    <div class="question-title">問題1</div>
-    <div class="question-text">次の言葉の共通点を答えよ：「赤」「青」「黄」</div>
 
-    <form onsubmit="checkAnswer(event)">
-      <input type="text" id="answer" placeholder="ここに答えを入力" required />
-      <button type="submit">送信</button>
-    </form>
+  <!-- Wrapper -->
+  <div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+
+        <!-- Header -->
+        <header id="header">
+          <a href="#" class="logo"><strong>問題1</strong> - なぞときサイト</a>
+        </header>
+
+        <!-- Content -->
+        <section id="one">
+          <h2 class="major">問題1</h2>
+          <p style="font-weight: bold; font-size: 1.2em;">
+            次の言葉の共通点を答えよ：「赤」「青」「黄」
+          </p>
+
+          <!-- スクロール用スペース -->
+          <div style="height: 250px;"></div>
+
+          <!-- 回答フォーム -->
+          <form id="answerForm" style="margin-top: 100px;">
+            <input
+              type="text"
+              id="answer"
+              name="answer"
+              placeholder="ここに答えを入力"
+              style="width: 100%; max-width: 400px; padding: 10px; font-size: 1em;"
+            />
+            <ul class="actions">
+              <li>
+                <input
+                  type="submit"
+                  value="送信"
+                  class="primary"
+                  style="font-size: 0.9em; padding: 5px 15px;"
+                />
+              </li>
+            </ul>
+          </form>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- Sidebar（テンプレート標準のままでもOK） -->
+    <div id="sidebar">
+      <div class="inner">
+        <!-- Menu -->
+        <nav id="menu">
+          <header class="major"><h2>メニュー</h2></header>
+          <ul>
+            <li><a href="index.html">ホーム</a></li>
+            <li><a href="mondai1.html">問題1</a></li>
+          </ul>
+        </nav>
+
+        <!-- Footer -->
+        <footer id="footer">
+          <p class="copyright">
+            &copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.
+          </p>
+        </footer>
+      </div>
+    </div>
+
   </div>
 
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <!-- 回答チェックのJavaScript -->
   <script>
-    function checkAnswer(event) {
-      event.preventDefault();
-      const input = document.getElementById("answer").value.trim();
-      if (input === "信号") {
-        window.location.href = "q2.html"; // 正解時に遷移
+    document.getElementById("answerForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const answer = document.getElementById("answer").value.trim();
+      if (answer === "信号") {
+        window.location.href = "q2.html";
       } else {
-        alert("違います。");
+        alert("違います");
       }
-    }
+    });
   </script>
+
 </body>
 </html>
