@@ -7,53 +7,48 @@
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
     <style>
-        /* 問題文の文字を太く */
+        /* カスタムスタイルを追加 */
         .question-text {
-            font-weight: 600; /* 太さ600で少し太め */
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-        /* 回答フォームの横幅調整 */
-        #answerForm {
-            width: 80%;
-            max-width: 500px;
-            text-align: center;
-        }
-        #userAnswer {
-            width: 100%;
-            font-size: 1.3rem;
-            padding: 12px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-        #submitBtn {
-            font-size: 1rem;
-            padding: 8px 16px;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-        /* フォーム全体の位置調整 */
-        section.answer-section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 60vh;
-            flex-direction: column;
-        }
-        #resultMessage {
-            margin-top: 15px;
             font-weight: bold;
-            color: #007700;
+            font-size: 1.2em;
+            margin-bottom: 2em;
+        }
+
+        .answer-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 3em;
+        }
+
+        #userAnswer {
+            font-size: 1.3em;
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 1em;
+        }
+
+        #submitBtn {
+            font-size: 1em;
+            padding: 8px 16px;
+            width: 50%;
+            max-width: 200px;
+        }
+
+        #resultMessage {
+            margin-top: 1em;
+            font-weight: bold;
+            text-align: center;
         }
     </style>
 </head>
 <body class="is-preload">
-
     <div id="wrapper">
 
-        <!-- Header -->
+        <!-- ヘッダー -->
         <header id="header">
             <div class="logo">
                 <span class="icon fa-gem"></span>
@@ -61,17 +56,14 @@
             <div class="content">
                 <div class="inner">
                     <h1>問題1</h1>
-                    <p class="question-text">これは問題文です。答えを入力してください。</p>
+                    <p class="question-text">「目には見えないけれど、命を育て、時に奪う。これは何？」</p>
                 </div>
             </div>
         </header>
 
-        <!-- Main -->
+        <!-- メイン -->
         <div id="main">
-
-            <!-- 答え入力フォーム -->
             <section class="answer-section">
-
                 <form id="answerForm">
                     <input 
                         type="text" 
@@ -82,49 +74,49 @@
                     <br />
                     <input 
                         type="submit" 
-                        id="submitBtn" 
-                        value="送信" 
+                        id="submitBtn"
                         class="button primary" 
+                        value="送信"
                     />
                     <p id="resultMessage"></p>
                 </form>
-
             </section>
-
         </div>
 
-        <!-- Footer -->
+        <!-- フッター -->
         <footer id="footer">
-            <p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+            <p class="copyright">
+                &copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.
+            </p>
         </footer>
 
     </div>
 
     <div id="bg"></div>
 
-    <!-- Scripts -->
+    <!-- スクリプト -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/browser.min.js"></script>
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
 
+    <!-- 答えチェック -->
     <script>
         document.getElementById('answerForm').addEventListener('submit', function(e){
             e.preventDefault();
-            const correctAnswer = "みず";  // 正解ワードはここで設定
-            let input = document.getElementById('userAnswer').value.trim().toLowerCase();
+            const correctAnswer = "みず"; // 正解はここで設定
+            const input = document.getElementById('userAnswer').value.trim().toLowerCase();
 
             if(input === correctAnswer){
-                document.getElementById('resultMessage').textContent = '正解！3秒後に次のページへ移動します…';
-                setTimeout(function(){
-                    window.location.href = 'mondai2.html';  // 次の問題ページのURLに変更してください
+                document.getElementById('resultMessage').textContent = '正解！3秒後に次の問題へ進みます…';
+                setTimeout(() => {
+                    window.location.href = 'mondai2.html'; // 次の問題へ
                 }, 3000);
             } else {
-                document.getElementById('resultMessage').textContent = 'ちがうみたい…もう一度試してね！';
+                document.getElementById('resultMessage').textContent = 'ちがうみたい…もう一度考えてみてね！';
             }
         });
     </script>
-
 </body>
 </html>
