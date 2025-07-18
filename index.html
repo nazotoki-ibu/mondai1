@@ -1,100 +1,97 @@
 <!DOCTYPE HTML>
-<html>
-  <head>
-    <title>問題1 - 謎解きサイト</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-    <style>
-      #question-box {
-        position: absolute;
-        top: 15%;
-        width: 80%;
-        left: 10%;
-        font-size: 1.4em;
-        font-weight: bold;
-        color: white;
-        text-align: center;
-      }
-
-      #answer-form {
-        position: absolute;
-        bottom: 15%;
-        width: 80%;
-        left: 10%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 10px;
-      }
-
-      input[type="text"] {
-        flex: 1;
-        padding: 10px;
-        font-size: 1em;
-        border: 1px solid #ffffff88;
-        border-radius: 5px;
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
-      }
-
-      input[type="submit"] {
-        padding: 10px 15px;
-        font-size: 0.9em;
-        border: none;
-        border-radius: 5px;
-        background: #ffffff44;
-        color: white;
-        cursor: pointer;
-      }
-
-      input[type="submit"]:hover {
-        background: #ffffff66;
-      }
-    </style>
-  </head>
-  <body class="is-preload">
-    <!-- Wrapper -->
-    <div id="wrapper">
-      <!-- Main -->
-      <div id="main">
-        <article id="home">
-          <div id="question-box">
-            問題1：ある自然数の倍数を探しています。ヒントは「春夏秋冬」。
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>問題1</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  <style>
+    /* スマホ基準でレイアウト調整 */
+    section#one {
+      position: relative;
+      padding-top: 10vh;
+      padding-bottom: 50vh;
+      text-align: center;
+    }
+    section#one .question {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-bottom: 20vh;
+    }
+    section#one .answer-wrapper {
+      position: absolute;
+      bottom: 10vh;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 400px;
+    }
+    section#one .answer-wrapper input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 1.1em;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+    section#one .answer-wrapper input[type="submit"] {
+      width: 40%;
+      font-size: 0.9em;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body class="is-preload">
+  <div id="wrapper">
+    <div id="main">
+      <div class="inner">
+        <section id="one">
+          <h2 class="major">問題1</h2>
+          <div class="question">次の言葉の共通点は？「赤」「青」「黄」</div>
+          <div class="answer-wrapper">
+            <form id="answerForm">
+              <input type="text" id="userAnswer" placeholder="答えを入力" autocomplete="off" />
+              <input type="submit" value="送信" class="button primary" />
+            </form>
           </div>
-
-          <form id="answer-form" onsubmit="checkAnswer(event)">
-            <input type="text" id="answer" placeholder="答えを入力" autocomplete="off" />
-            <input type="submit" value="送信" />
-          </form>
-        </article>
+        </section>
       </div>
-
-      <!-- Footer -->
-      <footer id="footer">
-        <p class="copyright">&copy; いぶいぶ 2025</p>
-      </footer>
     </div>
+    <div id="sidebar">
+      <div class="inner">
+        <nav id="menu">
+          <header class="major"><h2>メニュー</h2></header>
+          <ul>
+            <li><a href="mondai1.html">問題1</a></li>
+          </ul>
+        </nav>
+        <footer id="footer">
+          <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+        </footer>
+      </div>
+    </div>
+  </div>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+  <div id="bg"></div>
 
-    <!-- 回答チェック用 -->
-    <script>
-      function checkAnswer(event) {
-        event.preventDefault();
-        const answer = document.getElementById("answer").value.trim().toLowerCase();
-        if (answer === "4") {
-          window.location.href = "../mondai2/";
-        } else {
-          alert("違います。もう一度考えてみてください。");
-        }
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    document.getElementById("answerForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const ans = document.getElementById("userAnswer").value.trim();
+      if(ans === "信号"){
+        alert("正解です！");
+        // ここで次のページへ
+      } else {
+        alert("ちがいます…");
       }
-    </script>
-  </body>
+    });
+  </script>
+</body>
 </html>
