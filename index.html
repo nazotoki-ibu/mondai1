@@ -1,55 +1,85 @@
 <!DOCTYPE HTML>
 <html lang="ja">
 <head>
-  <title>謎解き mondai1</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="assets/css/main.css" />
-  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  <title>問題1</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+    .top-half {
+      flex: 1;
+      padding: 20px;
+      box-sizing: border-box;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2em;
+      text-align: center;
+    }
+    .bottom-half {
+      flex: 1;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    input[type="text"] {
+      width: 80%;
+      max-width: 300px;
+      font-size: 1.1em;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      width: 80%;
+      max-width: 300px;
+      font-size: 1.1em;
+      padding: 12px;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 10px;
+      color: red;
+      min-height: 1.2em;
+      font-weight: bold;
+    }
+  </style>
 </head>
-<body class="is-preload">
+<body>
 
-  <!-- Wrapper -->
-  <div id="wrapper">
-
-    <!-- Main -->
-    <section id="main" class="panel">
-      <div class="inner">
-        <h2>問題1</h2>
-        <p>この問題の答えを入力してください。</p>
-        <input type="text" id="answer" placeholder="こたえを入力" />
-        <button id="submitBtn">送信</button>
-        <p id="result"></p>
-      </div>
-    </section>
-
+  <div class="top-half">
+    問題文をここに書いてください。
   </div>
 
-  <!-- Scripts -->
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/browser.min.js"></script>
-  <script src="assets/js/breakpoints.min.js"></script>
-  <script src="assets/js/util.js"></script>
-  <script src="assets/js/main.js"></script>
+  <div class="bottom-half">
+    <input type="text" id="answer" placeholder="答えを入力してください" />
+    <button id="submitBtn">送信</button>
+    <p id="result"></p>
+  </div>
 
-  <!-- #main自動表示の修正版スクリプト -->
   <script>
-    window.addEventListener('load', function () {
-      if (!location.hash || location.hash === "#") {
-        location.hash = "#main";
-      }
-    });
-
-    // 問題の正解判定とページ遷移
-    document.getElementById('submitBtn').addEventListener('click', function() {
-      const input = document.getElementById('answer').value.trim();
-      const correctAnswer = "こたえ";  // 正解をここに入れる
-      const nextPage = "mondai2.html"; // 次ページのURL
-
-      if(input === correctAnswer){
-        window.location.href = nextPage;
+    document.getElementById('submitBtn').addEventListener('click', function(){
+      const answer = document.getElementById('answer').value.trim();
+      // 今は正解判定なし。後で設定可能。
+      if(answer === '') {
+        document.getElementById('result').textContent = '答えを入力してください。';
       } else {
-        document.getElementById('result').textContent = "不正解です。もう一度試してください。";
+        document.getElementById('result').textContent = '回答ありがとうございます！';
       }
     });
   </script>
