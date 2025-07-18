@@ -1,65 +1,103 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>問題1</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-  </head>
-  <body class="is-preload">
+<head>
+  <title>問題1</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+<body>
 
-    <!-- Wrapper -->
-    <div id="wrapper">
+  <!-- Wrapper -->
+  <div id="wrapper">
 
-      <!-- Main -->
-      <section id="main" class="main style1">
-        <div class="inner">
-          <header class="major">
-            <h2>問題1</h2>
-            <p>問題文をここに書いてください。</p>
-          </header>
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
 
-          <form id="quizForm">
+        <!-- Header -->
+        <header id="header">
+          <a href="#" class="logo"><strong>問題1</strong> - なぞときサイト</a>
+        </header>
+
+        <!-- Content -->
+        <section id="one">
+          <h2 class="major">問題1</h2>
+          <p style="font-weight: bold; font-size: 1.2em;">
+            次の言葉の共通点を答えよ：「赤」「青」「黄」
+          </p>
+
+          <!-- スクロール用スペース -->
+          <div style="height: 250px;"></div>
+
+          <!-- 回答フォーム -->
+          <form id="answerForm" style="margin-top: 100px;">
             <input
               type="text"
-              id="answerInput"
+              id="answer"
               name="answer"
               placeholder="ここに答えを入力"
-              style="width: 100%; margin-bottom: 1em;"
+              style="width: 100%; max-width: 400px; padding: 10px; font-size: 1em;"
             />
-            <ul class="actions special">
-              <li><input type="submit" value="送信" class="primary" /></li>
+            <ul class="actions">
+              <li>
+                <input
+                  type="submit"
+                  value="送信"
+                  class="primary"
+                  style="font-size: 0.9em; padding: 5px 15px;"
+                />
+              </li>
             </ul>
-            <p id="result" style="margin-top: 1em;"></p>
           </form>
-        </div>
-      </section>
+        </section>
 
-      <!-- Footer -->
-      <footer id="footer">
-        <p class="copyright">&copy; いぶいぶ謎解きサイト</p>
-      </footer>
-
+      </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script>
-      document.getElementById("quizForm").addEventListener("submit", function (e) {
-        e.preventDefault();
-        const answer = document.getElementById("answerInput").value.trim();
-        const result = document.getElementById("result");
+    <!-- Sidebar（テンプレート標準のままでもOK） -->
+    <div id="sidebar">
+      <div class="inner">
+        <!-- Menu -->
+        <nav id="menu">
+          <header class="major"><h2>メニュー</h2></header>
+          <ul>
+            <li><a href="index.html">ホーム</a></li>
+            <li><a href="mondai1.html">問題1</a></li>
+          </ul>
+        </nav>
 
-        // 正解チェック（ここは適宜編集）
-        if (answer === "正解") {
-          result.innerText = "正解です！";
-          // location.href = "次のページ.html"; ←今は遷移しない
-        } else {
-          result.innerText = "不正解です。";
-        }
-      });
-    </script>
-  </body>
+        <!-- Footer -->
+        <footer id="footer">
+          <p class="copyright">
+            &copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.
+          </p>
+        </footer>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <!-- 回答チェックのJavaScript -->
+  <script>
+    document.getElementById("answerForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const answer = document.getElementById("answer").value.trim();
+      if (answer === "信号") {
+        window.location.href = "q2.html";
+      } else {
+        alert("違います");
+      }
+    });
+  </script>
+
+</body>
 </html>
