@@ -1,81 +1,27 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="ja">
 <head>
-  <title>問題1</title>
+  <title>謎解き mondai1</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="assets/css/main.css" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
-<body>
+<body class="is-preload">
 
   <!-- Wrapper -->
   <div id="wrapper">
 
     <!-- Main -->
-    <div id="main">
+    <section id="main" class="panel">
       <div class="inner">
-
-        <!-- Header -->
-        <header id="header">
-          <a href="#" class="logo"><strong>問題1</strong> - なぞときサイト</a>
-        </header>
-
-        <!-- Content -->
-        <section id="one">
-          <h2 class="major">問題1</h2>
-          <p style="font-weight: bold; font-size: 1.2em;">
-            次の言葉の共通点を答えよ：「赤」「青」「黄」
-          </p>
-
-          <!-- スクロール用スペース -->
-          <div style="height: 250px;"></div>
-
-          <!-- 回答フォーム -->
-          <form id="answerForm" style="margin-top: 100px;">
-            <input
-              type="text"
-              id="answer"
-              name="answer"
-              placeholder="ここに答えを入力"
-              style="width: 100%; max-width: 400px; padding: 10px; font-size: 1em;"
-            />
-            <ul class="actions">
-              <li>
-                <input
-                  type="submit"
-                  value="送信"
-                  class="primary"
-                  style="font-size: 0.9em; padding: 5px 15px;"
-                />
-              </li>
-            </ul>
-          </form>
-        </section>
-
+        <h2>問題1</h2>
+        <p>この問題の答えを入力してください。</p>
+        <input type="text" id="answer" placeholder="こたえを入力" />
+        <button id="submitBtn">送信</button>
+        <p id="result"></p>
       </div>
-    </div>
-
-    <!-- Sidebar（テンプレート標準のままでもOK） -->
-    <div id="sidebar">
-      <div class="inner">
-        <!-- Menu -->
-        <nav id="menu">
-          <header class="major"><h2>メニュー</h2></header>
-          <ul>
-            <li><a href="index.html">ホーム</a></li>
-            <li><a href="mondai1.html">問題1</a></li>
-          </ul>
-        </nav>
-
-        <!-- Footer -->
-        <footer id="footer">
-          <p class="copyright">
-            &copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.
-          </p>
-        </footer>
-      </div>
-    </div>
+    </section>
 
   </div>
 
@@ -86,25 +32,27 @@
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
 
-  <!-- 回答チェックのJavaScript -->
+  <!-- #main自動表示の修正版スクリプト -->
   <script>
-    document.getElementById("answerForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const answer = document.getElementById("answer").value.trim();
-      if (answer === "信号") {
-        window.location.href = "q2.html";
+    window.addEventListener('load', function () {
+      if (!location.hash || location.hash === "#") {
+        location.hash = "#main";
+      }
+    });
+
+    // 問題の正解判定とページ遷移
+    document.getElementById('submitBtn').addEventListener('click', function() {
+      const input = document.getElementById('answer').value.trim();
+      const correctAnswer = "こたえ";  // 正解をここに入れる
+      const nextPage = "mondai2.html"; // 次ページのURL
+
+      if(input === correctAnswer){
+        window.location.href = nextPage;
       } else {
-        alert("違います");
+        document.getElementById('result').textContent = "不正解です。もう一度試してください。";
       }
     });
   </script>
-<script>
-  window.addEventListener('load', function () {
-    if (!window.location.hash) {
-      window.location.hash = '#main';
-    }
-  });
-</script>
 
 </body>
 </html>
