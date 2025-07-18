@@ -1,122 +1,89 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-    <title>問題1</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-    <style>
-        /* カスタムスタイルを追加 */
-        .question-text {
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-bottom: 2em;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>問題1</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background: #f0f0f0;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100vh;
+      overflow-y: auto;
+    }
 
-        .answer-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 3em;
-        }
+    .container {
+      max-width: 600px;
+      width: 90%;
+      margin-top: 80px;
+      text-align: center;
+    }
 
-        #userAnswer {
-            font-size: 1.3em;
-            padding: 10px;
-            width: 80%;
-            max-width: 400px;
-            border: 2px solid #ccc;
-            border-radius: 6px;
-            margin-bottom: 1em;
-        }
+    .question-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
 
-        #submitBtn {
-            font-size: 1em;
-            padding: 8px 16px;
-            width: 50%;
-            max-width: 200px;
-        }
+    .question-text {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 80px;
+    }
 
-        #resultMessage {
-            margin-top: 1em;
-            font-weight: bold;
-            text-align: center;
-        }
-    </style>
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 1.1rem;
+      border: 2px solid #888;
+      border-radius: 8px;
+      box-sizing: border-box;
+      margin-bottom: 16px;
+    }
+
+    button {
+      padding: 8px 20px;
+      font-size: 1rem;
+      background-color: #444;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #222;
+    }
+  </style>
 </head>
-<body class="is-preload">
-    <div id="wrapper">
+<body>
+  <div class="container">
+    <div class="question-title">問題1</div>
+    <div class="question-text">次の言葉の共通点を答えよ：「赤」「青」「黄」</div>
 
-        <!-- ヘッダー -->
-        <header id="header">
-            <div class="logo">
-                <span class="icon fa-gem"></span>
-            </div>
-            <div class="content">
-                <div class="inner">
-                    <h1>問題1</h1>
-                    <p class="question-text">「目には見えないけれど、命を育て、時に奪う。これは何？」</p>
-                </div>
-            </div>
-        </header>
+    <form onsubmit="checkAnswer(event)">
+      <input type="text" id="answer" placeholder="ここに答えを入力" required />
+      <button type="submit">送信</button>
+    </form>
+  </div>
 
-        <!-- メイン -->
-        <div id="main">
-            <section class="answer-section">
-                <form id="answerForm">
-                    <input 
-                        type="text" 
-                        id="userAnswer" 
-                        placeholder="答えを入力してください" 
-                        autocomplete="off"
-                    />
-                    <br />
-                    <input 
-                        type="submit" 
-                        id="submitBtn"
-                        class="button primary" 
-                        value="送信"
-                    />
-                    <p id="resultMessage"></p>
-                </form>
-            </section>
-        </div>
-
-        <!-- フッター -->
-        <footer id="footer">
-            <p class="copyright">
-                &copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.
-            </p>
-        </footer>
-
-    </div>
-
-    <div id="bg"></div>
-
-    <!-- スクリプト -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
-
-    <!-- 答えチェック -->
-    <script>
-        document.getElementById('answerForm').addEventListener('submit', function(e){
-            e.preventDefault();
-            const correctAnswer = "みず"; // 正解はここで設定
-            const input = document.getElementById('userAnswer').value.trim().toLowerCase();
-
-            if(input === correctAnswer){
-                document.getElementById('resultMessage').textContent = '正解！3秒後に次の問題へ進みます…';
-                setTimeout(() => {
-                    window.location.href = 'mondai2.html'; // 次の問題へ
-                }, 3000);
-            } else {
-                document.getElementById('resultMessage').textContent = 'ちがうみたい…もう一度考えてみてね！';
-            }
-        });
-    </script>
+  <script>
+    function checkAnswer(event) {
+      event.preventDefault();
+      const input = document.getElementById("answer").value.trim();
+      if (input === "信号") {
+        window.location.href = "q2.html"; // 正解時に遷移
+      } else {
+        alert("違います。");
+      }
+    }
+  </script>
 </body>
 </html>
