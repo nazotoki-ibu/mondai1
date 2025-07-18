@@ -1,72 +1,81 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>問題1</title>
   <style>
     html, body {
       height: 100%;
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      display: flex;
-      flex-direction: column;
+      font-family: Arial, sans-serif;
+      background: #0c0c0c;
+      color: #eee;
+      position: relative;
     }
-    .top-half {
-      flex: 1;
-      padding: 20px;
-      box-sizing: border-box;
-      border-bottom: 1px solid #ccc;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.2em;
+    .question {
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 600px;
+      font-size: 1.5rem;
       text-align: center;
     }
-    .bottom-half {
-      flex: 1;
-      padding: 20px;
-      box-sizing: border-box;
+    .answer-area {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 360px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
     }
     input[type="text"] {
-      width: 80%;
-      max-width: 300px;
-      font-size: 1.1em;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      width: 100%;
+      padding: 1em;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      border: none;
+      background: #222;
+      color: #eee;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 10px #007acc88;
     }
     button {
-      width: 80%;
-      max-width: 300px;
-      font-size: 1.1em;
-      padding: 12px;
-      background-color: #007acc;
-      color: white;
+      width: 100%;
+      padding: 1em;
+      font-size: 1.2rem;
+      border-radius: 8px;
       border: none;
-      border-radius: 6px;
+      background: #007acc;
+      color: white;
       cursor: pointer;
+      box-shadow: 0 0 15px #007acccc;
+    }
+    button:hover {
+      background: #005fa3;
+      box-shadow: 0 0 20px #005fa3cc;
     }
     #result {
-      margin-top: 10px;
-      color: red;
+      margin-top: 1rem;
       min-height: 1.2em;
-      font-weight: bold;
+      color: #ff6666;
+      font-weight: 600;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
-  <div class="top-half">
+  <div class="question">
     問題文をここに書いてください。
   </div>
 
-  <div class="bottom-half">
+  <div class="answer-area">
     <input type="text" id="answer" placeholder="答えを入力してください" />
     <button id="submitBtn">送信</button>
     <p id="result"></p>
@@ -74,9 +83,8 @@
 
   <script>
     document.getElementById('submitBtn').addEventListener('click', function(){
-      const answer = document.getElementById('answer').value.trim();
-      // 今は正解判定なし。後で設定可能。
-      if(answer === '') {
+      const ans = document.getElementById('answer').value.trim();
+      if(ans === '') {
         document.getElementById('result').textContent = '答えを入力してください。';
       } else {
         document.getElementById('result').textContent = '回答ありがとうございます！';
