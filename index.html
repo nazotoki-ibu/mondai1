@@ -1,96 +1,65 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>問題1</title>
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0c0c0c;
-      color: #eee;
-      position: relative;
-    }
-    .question {
-      position: absolute;
-      top: 5%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      max-width: 600px;
-      font-size: 1.5rem;
-      text-align: center;
-    }
-    .answer-area {
-      position: absolute;
-      bottom: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      max-width: 360px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    input[type="text"] {
-      width: 100%;
-      padding: 1em;
-      font-size: 1.2rem;
-      border-radius: 8px;
-      border: none;
-      background: #222;
-      color: #eee;
-      margin-bottom: 1rem;
-      box-shadow: 0 0 10px #007acc88;
-    }
-    button {
-      width: 100%;
-      padding: 1em;
-      font-size: 1.2rem;
-      border-radius: 8px;
-      border: none;
-      background: #007acc;
-      color: white;
-      cursor: pointer;
-      box-shadow: 0 0 15px #007acccc;
-    }
-    button:hover {
-      background: #005fa3;
-      box-shadow: 0 0 20px #005fa3cc;
-    }
-    #result {
-      margin-top: 1rem;
-      min-height: 1.2em;
-      color: #ff6666;
-      font-weight: 600;
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
+<html>
+  <head>
+    <title>問題1</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  </head>
+  <body class="is-preload">
 
-  <div class="question">
-    問題文をここに書いてください。
-  </div>
+    <!-- Wrapper -->
+    <div id="wrapper">
 
-  <div class="answer-area">
-    <input type="text" id="answer" placeholder="答えを入力してください" />
-    <button id="submitBtn">送信</button>
-    <p id="result"></p>
-  </div>
+      <!-- Main -->
+      <section id="main" class="main style1">
+        <div class="inner">
+          <header class="major">
+            <h2>問題1</h2>
+            <p>問題文をここに書いてください。</p>
+          </header>
 
-  <script>
-    document.getElementById('submitBtn').addEventListener('click', function(){
-      const ans = document.getElementById('answer').value.trim();
-      if(ans === '') {
-        document.getElementById('result').textContent = '答えを入力してください。';
-      } else {
-        document.getElementById('result').textContent = '回答ありがとうございます！';
-      }
-    });
-  </script>
+          <form id="quizForm">
+            <input
+              type="text"
+              id="answerInput"
+              name="answer"
+              placeholder="ここに答えを入力"
+              style="width: 100%; margin-bottom: 1em;"
+            />
+            <ul class="actions special">
+              <li><input type="submit" value="送信" class="primary" /></li>
+            </ul>
+            <p id="result" style="margin-top: 1em;"></p>
+          </form>
+        </div>
+      </section>
 
-</body>
+      <!-- Footer -->
+      <footer id="footer">
+        <p class="copyright">&copy; いぶいぶ謎解きサイト</p>
+      </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      document.getElementById("quizForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const answer = document.getElementById("answerInput").value.trim();
+        const result = document.getElementById("result");
+
+        // 正解チェック（ここは適宜編集）
+        if (answer === "正解") {
+          result.innerText = "正解です！";
+          // location.href = "次のページ.html"; ←今は遷移しない
+        } else {
+          result.innerText = "不正解です。";
+        }
+      });
+    </script>
+  </body>
 </html>
